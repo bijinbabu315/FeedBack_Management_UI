@@ -1,0 +1,34 @@
+.login,
+.image {
+
+  min-height: 100vh;
+}
+.loginHeading1{
+  width: 100%;
+  font-size: 25px;
+}
+.bg-image {
+  background: url('../../assets/images/login_left.png');
+  background-size: cover;
+  background-position: center center;
+  margin-top: 10vh;
+  height: 80vh;
+}
+.faded-text-color{
+  color: #6c757d9c!important;
+}
+.brand-style-blue{
+  color: #0016ff!important;
+  font-weight: bold;
+}
+.error-message{
+  color: rgb(255, 0, 21)!important;
+  font-weight: bold;
+}
+.brand-style-green{
+  color: limegreen!important;
+}
+.button-green{
+    border: none;
+    background-color: limegreen;
+}

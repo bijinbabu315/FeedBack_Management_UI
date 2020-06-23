@@ -1,3 +1,38 @@
-<p>
-  login works!
-</p>
+<div class="container-fluid">
+  <div class="row no-gutter">
+      <!-- The image half -->
+      <div class="col-md-6 d-none d-md-flex bg-image"></div>
+      <!-- The content half -->
+      <div class="col-md-6 bg-light">
+          <div class="login d-flex align-items-center py-5">
+              <!-- Login Form-->
+              <div class="container">
+                  <div class="row">
+                      <div class="col-lg-10 col-xl-7 mx-auto">
+                          <div class="loginHeading1"><span class="brand-style-blue">Cognizant</span>&nbsp;<span class="brand-style-green">Outreach</span></div>
+                          <p class="text-muted mb-4 faded-text-color">Feedback management system</p>
+                          <span class="error-message" *ngIf="errorMessage || isLoginFailed" >
+                             {{errorMessage}}
+                          </span>
+                          <form role="form" (submit)="signIn()">
+                              <div class="form-group mb-3">
+                                   <input type="text" class="form-control" id="username" name="username" required  placeholder="User Name" [(ngModel)]="loginForm.username"  (keydown)="clearMessage()" />
+                              </div>
+                              <div class="form-group mb-3">
+                                  <input type="password" class="form-control" id="password" name="password" [(ngModel)]="loginForm.password" (keydown)="clearMessage()"  placeholder="Password"/>
+
+                              </div>
+
+                              <button type="submit" class="btn btn-primary btn-block text-uppercase mb-2 shadow-sm button-green">Sign me in</button>
+
+
+                          </form>
+                      </div>
+                  </div>
+              </div><!-- End -->
+
+          </div>
+      </div><!-- End -->
+
+  </div>
+</div>
