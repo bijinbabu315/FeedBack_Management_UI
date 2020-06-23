@@ -2,15 +2,11 @@ import { TestBed } from '@angular/core/testing';
 
 import { TokenProviderService } from './token-provider.service';
 
-describe('TokenProviderService', () => {
-  let service: TokenProviderService;
-
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(TokenProviderService);
-  });
+describe('TokenStorageService', () => {
+  beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
+    const service: TokenProviderService = TestBed.get(TokenProviderService);
     expect(service).toBeTruthy();
   });
 });

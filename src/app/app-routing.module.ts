@@ -10,6 +10,11 @@ const routes: Routes = [ {
   component: LoginComponent
 },
 {
+  path: 'login',
+  pathMatch: 'full',
+  component: LoginComponent
+},
+{
   path: 'dashboard',
   pathMatch: 'full',
   component: DashboardComponent

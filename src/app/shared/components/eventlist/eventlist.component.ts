@@ -14,6 +14,7 @@ export class EventlistComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getAllEvents();
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 5,
@@ -23,7 +24,6 @@ export class EventlistComponent implements OnInit {
     };
     this.eventList = [] ;
     const table: any = $('#table1');
-    this.getAllEvents();
   }
 
   getAllEvents() {
