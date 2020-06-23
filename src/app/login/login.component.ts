@@ -26,8 +26,6 @@ export class LoginComponent implements OnInit , OnDestroy {
   /* Error message of login component */
   errorMessage: string;
 
-  subscriptions: Subscription[];
-
   constructor(private authService: AuthService,
               private tokenService: TokenProviderService,
               private router: Router) { }
@@ -71,7 +69,7 @@ export class LoginComponent implements OnInit , OnDestroy {
    * Authenticates user
    */
   private authenticateUser() {
-    this.subscriptions.push(this.authService.login(this.loginForm).subscribe(
+   this.authService.login(this.loginForm).subscribe(
       data => {
         this.tokenService.saveToken(data.accessToken);
         this.tokenService.saveUser(data);
@@ -84,7 +82,7 @@ export class LoginComponent implements OnInit , OnDestroy {
         this.isLoginFailed = true;
         this.errorMessage = 'Invalid Login';
       }
-    ));
+    );
   }
 
   /**
@@ -98,8 +96,5 @@ export class LoginComponent implements OnInit , OnDestroy {
    * on destroy
    */
   ngOnDestroy(): void {
-   this.subscriptions.forEach(subscription => {
-     subscription.unsubscribe();
-   });
   }
 }
