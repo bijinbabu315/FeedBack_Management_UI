@@ -12,6 +12,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { EventlistComponent } from './shared/components/eventlist/eventlist.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
+import { AppInterceptor } from './interceptors/app.interceptor';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { FooterComponent } from './shared/components/footer/footer.component';
     FontAwesomeModule,
     DataTablesModule
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -7,7 +7,7 @@ import { TokenProviderService } from '../services/token-provider.service';
 const TOKEN_HEADER_KEY = 'Authorization';
 
 @Injectable()
-export class AuthInterceptor implements HttpInterceptor {
+export class AppInterceptor implements HttpInterceptor {
   constructor(private tokenService: TokenProviderService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
