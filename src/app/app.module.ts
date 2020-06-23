@@ -13,6 +13,7 @@ import { EventlistComponent } from './shared/components/eventlist/eventlist.comp
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { AppInterceptor } from './interceptors/app.interceptor';
+import { MaterialModule } from './material';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { AppInterceptor } from './interceptors/app.interceptor';
     ReactiveFormsModule,
     HttpClientModule,
     FontAwesomeModule,
-    DataTablesModule
+    DataTablesModule,
+    MaterialModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true }],
   bootstrap: [AppComponent]
