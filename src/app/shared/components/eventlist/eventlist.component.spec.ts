@@ -6,6 +6,8 @@ import { UserService } from 'src/app/services/user.service';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClient } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { DataTablesModule } from 'angular-datatables';
 
 describe('EventlistComponent', () => {
   let component: EventlistComponent;
@@ -17,7 +19,7 @@ describe('EventlistComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ EventlistComponent ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA],
-      imports: [HttpClientTestingModule, BrowserDynamicTestingModule, BrowserAnimationsModule],
+      imports: [FormsModule, HttpClientTestingModule, BrowserDynamicTestingModule, BrowserAnimationsModule, DataTablesModule.forRoot()],
       providers: [ UserService, HttpClient]
     }).compileComponents().then(() => {
     fixture = TestBed.createComponent(EventlistComponent);

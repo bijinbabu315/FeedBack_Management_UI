@@ -56,7 +56,9 @@
  * Zone JS is required by default for Angular itself.
  */
 import 'zone.js/dist/zone';  // Included with Angular CLI.
-
+import * as jQuery from 'jquery';
+// tslint:disable-next-line: no-string-literal
+window['$'] = jQuery;
 
 /***************************************************************************************************
  * APPLICATION IMPORTS
