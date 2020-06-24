@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit , OnDestroy {
   /**
    * Authenticates user
    */
-  private authenticateUser() {
+  authenticateUser() {
    this.authService.login(this.loginForm).subscribe(
       data => {
         this.tokenService.saveToken(data.accessToken);

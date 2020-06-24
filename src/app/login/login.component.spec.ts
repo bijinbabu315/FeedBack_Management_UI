@@ -1,31 +1,49 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
-import { HttpClientTestingModule } from '@angular/common/http/testing' ;
-import { Routes, RouterModule} from '@angular/router';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, inject } from '@angular/core';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing' ;
+import { Router} from '@angular/router';
 
 import { LoginComponent } from './login.component';
+import { AuthService } from '../services/auth.service';
+import { TokenProviderService } from '../services/token-provider.service';
+import {  HttpClientModule } from '@angular/common/http';
 
-
+class MockAuthService {
+  login(credentials) {
+    return {
+      token: 'sadsf'
+    };
+  }
+}
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
-  const routes: Routes = [];
+  let router: Router;
+  let authService: AuthService;
+  let tokenService: TokenProviderService;
+  const mockRouter: any = jasmine.createSpyObj(['navigate']);
+  let httpTestingController;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule, HttpClientTestingModule, RouterModule.forRoot(routes) ],
       declarations: [ LoginComponent ],
+      imports: [ FormsModule, HttpClientModule, HttpClientTestingModule ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA ],
+      providers: [ { provide: Router, useValue: mockRouter },
+      AuthService, TokenProviderService]
     })
-    .compileComponents();
+    .compileComponents().then(() => {
+      fixture = TestBed.createComponent(LoginComponent);
+      component = fixture.componentInstance;
+      httpTestingController = TestBed.get(HttpTestingController);
+      authService = TestBed.get(AuthService);
+      spyOn(component, 'authenticateUser').and.callThrough();
+      tokenService = TestBed.get(TokenProviderService);
+      router = TestBed.get(Router);
+      fixture.detectChanges();
+    });
   }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(LoginComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
 
   it('should create', () => {
     expect(component).toBeTruthy();
