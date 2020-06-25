@@ -25,6 +25,7 @@ describe('HeaderComponent', () => {
       component = fixture.componentInstance;
       tokenService = TestBed.get(TokenProviderService);
       router = TestBed.get(Router);
+      component.isLoggedIn = true;
       spyOn(tokenService, 'getUser').and.returnValue({roles: ['ROLE_ADMIN']});
       fixture.detectChanges();
     });
@@ -33,5 +34,9 @@ describe('HeaderComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should call signout function', () => {
+    component.signOut();
   });
 });
